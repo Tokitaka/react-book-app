@@ -25,5 +25,13 @@ Allows a component to access values stored in context.
 
 <br />
 
-# Issue
-
+# State Management
+<h3>version-1 : Props + EventHandler </h3>
+Define 'books' state and functions (create, edit, delete, fetch) in App component and pass them down to as Props. And whenever a child component changes the state, pass it up to the App through event object of handler.
+<br />
+Result : 
+Turns out, it's very easy to make a mistake along the way.
+<h3>version-2: React Context</h3>
+Create a Context (React feature) for sharing 'Application State (global use)' in 'Provider' and register 'Consumer' component inside of Provider. It can be accessed anywhere from component registered as Consumers and their child.
+<br />
+Result : it's more intuitive and cleaner code. It doesn't have to duplicate code as passing down props where even don't need them.
