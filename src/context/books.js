@@ -1,4 +1,4 @@
-import { useState, createContext } from 'react';
+import { useState, createContext, useCallback } from 'react';
 import axios from 'axios';
 
 const BookContext = createContext();
@@ -7,11 +7,11 @@ function Provider({ children }) {
         //useState에 저장된 state는 새로고침 하면 초기화됨 -> 앱 시작 때 마다 API 호출 
         const [books, setBooks] = useState([]);
 
-        const fetchBooks = async () => {
+        const fetchBooks = useCallback(async () => {
             const response = await axios.get('http://localhost:3001/books');
             
             setBooks(response.data);
-        };
+        }, []);
 
     const editBookById = async (id, newTitle) => {
         const response = await axios.put(`http://localhost:3001/books/${id}`,{
